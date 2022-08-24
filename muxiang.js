@@ -7,7 +7,7 @@
 // @license      MIT
 // @match        *://*.moycp.com/*
 // @grant        window.onurlchange
-// @require      https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
+// @require      https://lib.baomitu.com/jquery/2.1.4/jquery.min.js
 // @run-at       document-end
 
 // ==/UserScript==
