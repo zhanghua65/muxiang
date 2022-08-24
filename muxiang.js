@@ -4,10 +4,12 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       zhanghua65
+// @license      MIT
 // @match        *://*.moycp.com/*
 // @grant        window.onurlchange
 // @require      https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
 // @run-at       document-end
+
 // ==/UserScript==
 
 var setting = {
