@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.0
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
