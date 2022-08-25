@@ -36,7 +36,7 @@ $(function () {
             case '/login':
                 //登录
                 console.log("登录");
-               login();
+                // login();
                 break;
             case '/studyCenter/studying':
                 //学习中心
@@ -135,7 +135,6 @@ $(function () {
                 }
             }
         }
-
     }
     function courseware2(){
         let text = $(".vertical-line-right > .alreadystudy").text();
@@ -143,7 +142,8 @@ $(function () {
             // click_bo();
             iconfontClick();
         }else {
-            nextSection();
+            // huang
+            // nextSection();
         }
     }
     //点击按钮   开始按钮 \ue653  暂停按钮
@@ -168,14 +168,27 @@ $(function () {
         }
     }
     function nextSection() {
-        let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section").first();
+        // let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section").first();
+        // if ( section  ){
+        //     debugger
+        //     console.log("section",section);
+        //     section.click();
+        // }
+
+        // huang
+        // 获取课程全部元素
+        let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section");
         if ( section  ){
-            debugger
-            console.log("section",section);
-            section.click();
+            // 循环
+            section.each(function(index,item){
+                // 获取当前选中元素
+                if($(item).hasClass("current")){
+                    // 获取下一个元素
+                    section.eq(index+1).click();
+                };
+            });
         }
     }
-
     //直接自动播放
     function click_bo() {
         if ($("video > source")) {
@@ -203,14 +216,16 @@ $(function () {
     }
     setting.timer = setInterval(function () {
         if (window.onurlchange === null) {
+            // 监听url变化
             window.addEventListener('urlchange', (info) => {
                 console.log("变化", info);
-                console.log("我运行了");});
-                if(document.readyState === "complete"){
-                    init();
-                }
+                console.log("我运行了");
+                location.reload(); // 刷新页面
+            });
+            // 判断页面是否加载完成
+            if(document.readyState === "complete"){
+                init();
+            }
         }
     },500);
 });
-
-
