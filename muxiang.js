@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1.0
+// @version      0.1.1
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
@@ -36,7 +36,7 @@ $(function () {
             case '/login':
                 //登录
                 console.log("登录");
-                // login();
+                login();
                 break;
             case '/studyCenter/studying':
                 //学习中心
@@ -59,7 +59,7 @@ $(function () {
         }
     }
 
-//自动登录
+    //自动登录
     function login() {
         console.log("登录ing");
         let object = $(".choosed[style='display: none;']")
@@ -70,8 +70,25 @@ $(function () {
         }
         $(":text").attr("autocomplete","off");
         $(":password").attr("autocomplete","new-password");
-        let username =  $(":text").val(setting.username);
-        let password = $(":password").val(setting.password);
+        var focus = new Event('focus');
+        var input= new Event('input');
+        var change= new Event('change');
+        var blur= new Event('blur');
+
+        let username = document.getElementsByClassName("username")[0];
+        username.value = setting.username;
+        username.dispatchEvent(focus);
+        username.dispatchEvent(input);
+        username.dispatchEvent(change);
+        username.dispatchEvent(blur);
+        let password =document.getElementsByClassName("password")[0];
+        password.value= setting.password;
+        password.dispatchEvent(focus);
+        password.dispatchEvent(input);
+        password.dispatchEvent(change);
+        password.dispatchEvent(blur);
+
+
         //七天自动登录
         if (setting.isLogin) {
             $(".el-button.login-btn").click();
