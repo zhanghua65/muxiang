@@ -145,11 +145,18 @@ $(function () {
     }
     function courseware2(){
         let text = $(".vertical-line-right > .alreadystudy").text();
-        if (text.indexOf("100%") === -1){
-            iconfontClick();
-        }else {
-            //播放结束换下级
-            nextSection();
+        //判断视频插件加载
+        let video = document.getElementById("moshare-video_html5_api");
+        //判断视频出现在正中央
+        let skip = $(".transition-wrap").css("top");
+        if(video && skip == '0px'){
+            if (text.indexOf("100%") === -1){
+                iconfontClick();
+            }else {
+                // huang
+                console.log("进入已经播放完成的视频");
+                nextSection();
+            }
         }
     }
     //点击按钮   开始按钮 \ue653  暂停按钮
@@ -158,7 +165,7 @@ $(function () {
             var video = document.getElementById("moshare-video_html5_api");
             if (video !== null && video !== undefined && video !== '' ){
                 if ($("#moshare-video").hasClass("vjs-ended") ){
-                    console.log("播放完成");
+                    console.log("播放完成，自动停止");
                     nextSection();
                 }else if ( ($("#moshare-video").hasClass("vjs-playing") )){
                     console.log("播放中");
