@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.2
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
@@ -15,7 +15,9 @@
 
 var setting = {
         // 自动登录功能配置区
+        //登录账号
         username: '',
+        //登录密码
         password: '',
         isLogin: true,
         //分数未满40分
@@ -104,28 +106,14 @@ $(function () {
             let courseName =  infoList[i].getElementsByClassName("course-name")[0].innerText;
             //跳过新手课程
             console.log("courseName",courseName);
-            debugger
             if (courseName.indexOf("新手课程") === -1){
                 let  score =  infoList[i].getElementsByClassName("score")[0].innerText;
                 if (score.indexOf(setting.mark) === -1){
                     infoList[i].getElementsByClassName("learn")[0].click();
                     break;
-                }else {
-                    infoList[setting.courseIndex].getElementsByClassName("learn")[0].click();
-                    setting.courseIndex++;
-                    break;
                 }
             }
         }
-    }
-    function studying1() {
-        let $List =  $("li.course-item");
-        if ($List.length !== 0){
-            $List.filter(function(index) {
-                return $(this).find(".course-name").text().indexOf("新手课程") === -1
-            })
-        }
-
     }
 
     function catalog(){
@@ -145,8 +133,10 @@ $(function () {
                         let studys =  oDt[i].getElementsByClassName("study")[0];
                         if (studys.innerText === '课件'){
                             oDt[i].getElementsByClassName("study")[0].click();
+                            return
                         }
-                    }else {
+                    }
+                    if(i === oDt.length -1) {
                         location.href = "https://web.moycp.com/studyCenter/studying";
                     }
                 }
@@ -156,11 +146,10 @@ $(function () {
     function courseware2(){
         let text = $(".vertical-line-right > .alreadystudy").text();
         if (text.indexOf("100%") === -1){
-            // click_bo();
             iconfontClick();
         }else {
-            // huang
-            // nextSection();
+            //播放结束换下级
+            nextSection();
         }
     }
     //点击按钮   开始按钮 \ue653  暂停按钮
@@ -174,7 +163,6 @@ $(function () {
                 }else if ( ($("#moshare-video").hasClass("vjs-playing") )){
                     console.log("播放中");
                 }else {
-
                     $("div.volume-now").css("width","0%");
                     video.muted = "0";
                     video.playbackRate = setting.playbackRate;
@@ -185,50 +173,23 @@ $(function () {
         }
     }
     function nextSection() {
-        // let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section").first();
-        // if ( section  ){
-        //     debugger
-        //     console.log("section",section);
-        //     section.click();
-        // }
-
         // huang
         // 获取课程全部元素
         let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section");
         if ( section  ){
-            // 循环
-            section.each(function(index,item){
+            for (let i = 0; i < section.length; i++) {
                 // 获取当前选中元素
-                if($(item).hasClass("current")){
-                    // 获取下一个元素
-                    section.eq(index+1).click();
-                };
-            });
-        }
-    }
-    //直接自动播放
-    function click_bo() {
-        if ($("video > source")) {
-            var video = document.getElementById("moshare-video_html5_api");
-            var suspend = document.querySelector(".vjs-controls-disabled .vjs-workinghover .vjs-v7 .moshare-video-dimensions .vjs-has-started .vjs-paused .vjs-user-inactive");
-            if (video !== null && video !== undefined && video !== '' ){
-                if ($("#moshare-video").hasClass("vjs-playing") ) {
-
-
-                } else if (suspend) {
-                    video.muted = true;
-                    video.autoplay = true;
-                    video.play();
-                } else if ($(".bottom")) {
-                    video.muted = true;
-                    video.autoplay = true;
-                    video.play();
-                }if (document.querySelector('volume-now')) {
-                    video.muted = "0";
-                    video.playbackRate = setting.playbackRate;
+                let node =  section[i];
+                if(!node.classList.contains("current")){
+                    node.click();
+                    return
+                }
+                if(i === section.length -1) {
+                    location.href = "https://web.moycp.com/studyCenter/studying";
                 }
             }
-
+        }else{
+            location.href = "https://web.moycp.com/studyCenter/studyin";
         }
     }
     setting.timer = setInterval(function () {
@@ -237,7 +198,6 @@ $(function () {
             window.addEventListener('urlchange', (info) => {
                 console.log("变化", info);
                 console.log("我运行了");
-                location.reload(); // 刷新页面
             });
             // 判断页面是否加载完成
             if(document.readyState === "complete"){
