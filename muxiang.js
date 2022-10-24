@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1.2
+// @version      0.1.3
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
@@ -183,7 +183,8 @@ $(function () {
         // huang
         // 获取课程全部元素
         let section =  $("dd > .catalog-item-section-col2:not(.finish)").parent(".catalog-item-section");
-        if ( section  ){
+        //已经刷完的跳转 主页
+        if ( section && section.length > 0  ){
             for (let i = 0; i < section.length; i++) {
                 // 获取当前选中元素
                 let node =  section[i];
