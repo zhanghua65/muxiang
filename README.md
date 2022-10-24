@@ -3,11 +3,11 @@
 - 慕享自动刷课脚本
 - 自动登录 需要修改添加账号密码
 
-![image-20221024145833524](D:%5CideaSpcae_20210714%5Cgithub%5Cmuxiang%5CREADME.assets%5Cimage-20221024145833524.png)
+![image-20221024152404082](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/14510/image-20221024152404082.png)
 
-![image-20221024145919307](D:%5CideaSpcae_20210714%5Cgithub%5Cmuxiang%5CREADME.assets%5Cimage-20221024145919307.png)
+![image-20221024152422641](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/14510/image-20221024152422641.png)
 
-![image-20221024145959884](D:%5CideaSpcae_20210714%5Cgithub%5Cmuxiang%5CREADME.assets%5Cimage-20221024145959884.png)
+![image-20221024152439108](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/14510/image-20221024152439108.png)
 
 ## ⚠ 脚本声明
 
