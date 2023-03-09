@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1.3
+// @version      0.1.4
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
@@ -52,7 +52,7 @@ $(function () {
                 break;
             case '/courseware2':
                 //观看视频
-                // console.log("观看视频");
+                console.log("观看视频");
                 courseware2();
                 break;
             default:
@@ -63,6 +63,9 @@ $(function () {
 
     //自动登录
     function login() {
+        if (!setting.username && !setting.password){
+            return;
+        }
         console.log("登录ing");
         let object = $(".choosed[style='display: none;']")
         if (object == null) {
@@ -89,8 +92,6 @@ $(function () {
         password.dispatchEvent(input);
         password.dispatchEvent(change);
         password.dispatchEvent(blur);
-
-
         //七天自动登录
         if (setting.isLogin) {
             $(".el-button.login-btn").click();
@@ -144,39 +145,51 @@ $(function () {
         }
     }
     function courseware2(){
+        //查询播放进度
         let text = $(".vertical-line-right > .alreadystudy").text();
-        //判断视频插件加载
-        let video = document.getElementById("moshare-video_html5_api");
-        //判断视频出现在正中央
-        let skip = $(".transition-wrap").css("top");
-        if(video && skip == '0px'){
-            if (text.indexOf("100%") === -1){
-                iconfontClick();
-            }else {
-                // huang
-                console.log("进入已经播放完成的视频");
-                nextSection();
+        let playerDocument = document.getElementById("player");
+        if (playerDocument && $("div.pv-loading").css("display")=== 'none' ){
+            //判断视频插件加载
+            let video = playerDocument.getElementsByTagName("video");
+            //判断视频出现在正中央
+            if(playerDocument.children.length > 0 && video){
+                if (text.indexOf("100%") === -1){
+                    // console.log("未完成的视频，需要开始播放");
+                    iconfontClick();
+                }else {
+                    // huang
+                    // console.log("进入已经播放完成的视频");
+                    nextSection();
+                }
             }
         }
     }
     //点击按钮   开始按钮 \ue653  暂停按钮
     function iconfontClick() {
-        if ($("video > source")) {
-            var video = document.getElementById("moshare-video_html5_api");
-            if (video !== null && video !== undefined && video !== '' ){
-                if ($("#moshare-video").hasClass("vjs-ended") ){
-                    console.log("播放完成，自动停止");
+        if ($("pv-controls > pv-controls-left")) {
+            var leftDocument = document.getElementsByClassName("pv-controls-left");
+            let video = document.getElementsByTagName("video")[0];
+            if (leftDocument !== null && leftDocument !== undefined && leftDocument !== '' ){
+                debugger
+                let pvButton = $(".pv-controls-left > button:first");
+                let loading = $(".pv-progress-current-bg").css("width");
+                if ( loading && loading === '100%' &&   pvButton.hasClass("pv-icon-btn-play") ){
+                    // console.log("播放完成，自动停止");
                     nextSection();
-                }else if ( ($("#moshare-video").hasClass("vjs-playing") )){
-                    console.log("播放中");
+                }else if ( pvButton.hasClass("pv-icon-pause") ){
+                    // console.log("播放中");
                 }else {
-                    $("div.volume-now").css("width","0%");
+                    // console.log("未开始播放")
+                    let volumebtn = $("button.pv-volumebtn:first");
+                    if (volumebtn.hasClass("pv-icon-volumeon")){
+                        volumebtn.click();
+                        $("div.pv-volume-current").css("height","0%");
+                    }
                     video.muted = "0";
                     video.playbackRate = setting.playbackRate;
-                    $(".fl > i:nth-child(1)").click()
+                    pvButton.click()
                 }
             }
-
         }
     }
     function nextSection() {
