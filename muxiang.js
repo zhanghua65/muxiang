@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
-// @version      0.1.4
+// @version      0.1.5
 // @description  自动登录，选择未播放的视频，进行自动播放视频
 // @antifeature  自动登录，选择未播放的视频，进行自动播放视频
 // @author       zhanghua65
@@ -170,10 +170,10 @@ $(function () {
             var leftDocument = document.getElementsByClassName("pv-controls-left");
             let video = document.getElementsByTagName("video")[0];
             if (leftDocument !== null && leftDocument !== undefined && leftDocument !== '' ){
-                debugger
                 let pvButton = $(".pv-controls-left > button:first");
-                let loading = $(".pv-progress-current-bg").css("width");
-                if ( loading && loading === '100%' &&   pvButton.hasClass("pv-icon-btn-play") ){
+                let maxProgress = $(".pv-progress-current:first").css("width");
+                let Progress = $(".pv-progress-current > .pv-progress-current-bg:first").css("width");
+                if ( maxProgress === Progress &&   pvButton.hasClass("pv-icon-btn-play") ){
                     // console.log("播放完成，自动停止");
                     nextSection();
                 }else if ( pvButton.hasClass("pv-icon-pause") ){
