@@ -21,3 +21,18 @@
 -   v0.1.3: 优化播放无法跳转下一个课程
 -   v0.1.4  优化播放，增加手动填写账户密码
 -   v0.1.5  优化播放完成判断
+
+## 赞助
+
+如果你觉得这个项目对你有帮助，并且情况允许的话，可以给我一点点支持，总之非常感谢支持～
+
+<div style="display: flex; gap: 20px;">
+	<div style="text-align: center">
+		<img style="max-width: 420px" src="./image/wechat.png" alt="微信" />
+		<p>WeChat Pay</p>
+	</div>
+	<div style="text-align: center">
+		<img style="max-width: 420px" src="./image/alipay.png" alt="支付宝" />
+		<p>Alipay</p>
+	</div>
+</div>
