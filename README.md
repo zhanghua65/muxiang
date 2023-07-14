@@ -26,13 +26,6 @@
 
 如果你觉得这个项目对你有帮助，并且情况允许的话，可以给我一点点支持，总之非常感谢支持～
 
-<div style="display: flex; gap: 20px;">
-	<div style="text-align: center">
-		<img style="max-width: 420px" src="./image/wechat.png" alt="微信" />
-		<p>WeChat Pay</p>
-	</div>
-	<div style="text-align: center">
-		<img style="max-width: 420px" src="./image/alipay.png" alt="支付宝" />
-		<p>Alipay</p>
-	</div>
-</div>
+![image-20221024152439108](https://github.com/zhanghua65/muxiang/blob/main/image/wechat.png?raw=true)
+![image-20221024152439108](https://github.com/zhanghua65/muxiang/blob/main/image/alipay.png?raw=true)
+
