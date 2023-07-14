@@ -3,11 +3,11 @@
 - 慕享自动刷课脚本
 - 自动登录 需要修改添加账号密码
 
-![image-20221024152404082](https://github.com/zhanghua65/muxiang/blob/main/image/image-20221024152404082.png?raw=true)
+![image-20221024152404082](http://nas.ump45.top:19000/preview/images/image-20221024152422641.png)
 
-![image-20221024152422641](https://github.com/zhanghua65/muxiang/blob/main/image/image-20221024152422641.png?raw=true)
+![image-20221024152422641](http://nas.ump45.top:19000/preview/images/image-20221024152422641.png?raw=true)
 
-![image-20221024152439108](https://github.com/zhanghua65/muxiang/blob/main/image/image-20221024152439108.png?raw=true)
+![image-20221024152439108](http://nas.ump45.top:19000/preview/images/image-20221024152439108.png?raw=true)
 
 ## ⚠ 脚本声明
 
@@ -28,11 +28,11 @@
 
 <div style="display: flex; gap: 20px;">
 	<div style="text-align: center">
-		<img style="max-width: 420px" src="https://github.com/zhanghua65/muxiang/blob/main/image/wechat.png?raw=true" alt="微信" />
+		<img style="max-width: 420px" src="http://nas.ump45.top:19000/preview/images/wechat.png" alt="微信" />
 		<p>WeChat Pay</p>
 	</div>
 	<div style="text-align: center">
-		<img style="max-width: 420px" src="https://github.com/zhanghua65/muxiang/blob/main/image/alipay.png?raw=true" alt="支付宝" />
+		<img style="max-width: 420px" src="http://nas.ump45.top:19000/preview/images/alipay.png" alt="支付宝" />
 		<p>Alipay</p>
 	</div>
 </div>
