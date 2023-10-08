@@ -2,8 +2,8 @@
 // @name         慕享刷课
 // @namespace    http://tampermonkey.net/
 // @version      0.1.6
-// @description  自动登录，选择未播放的视频，进行自动播放视频
-// @antifeature  自动登录，选择未播放的视频，进行自动播放视频
+// @description  慕享自动刷课脚本
+// @antifeature  慕享自动刷课脚本
 // @author       zhanghua65
 // @license      MIT
 // @match        *://*.moycp.com/*
